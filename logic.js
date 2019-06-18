@@ -28,7 +28,7 @@ d3.json(queryUrl, function(data) {
 function createMap() {
     
     // Initialize map
-    var myMap = L.map("mapdiv", {center: [37.09, -95.71], zoom: 5});
+    var myMap = L.map('mapdiv', {center: [37.09, -95.71], zoom: 5});
     
     // Define streetmap
     var streetmap = L.tileLayer.provider('Esri.WorldStreetMap', {attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012',

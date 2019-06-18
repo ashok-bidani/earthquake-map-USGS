@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="src/leaflet.css">
     <script src="src/leaflet-src.js"></script>
     
-    <!-- Leaflet Providers Extension (Tile Map Providers) -->
+    <!-- Leaflet Providers Extension (For Tile Maps) -->
     <script src="src/leaflet-providers.js"></script>
     
     <!-- D3 CDN -->
@@ -26,8 +26,6 @@
     
         // Define streetmap
         var streetmap = L.tileLayer.provider('Esri.WorldStreetMap', {attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012', maxZoom: 18});
-        
-        var map2 = L.tileLayer.provider('OpenStreetMap.Mapnik');
     
         // Add streetmap to map
         myMap.addLayer(streetmap);
