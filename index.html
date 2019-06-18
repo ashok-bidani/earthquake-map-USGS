@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="src/leaflet.css">
     <script src="src/leaflet-src.js"></script>
     
+    <!-- Leaflet Providers Extension (Tile Map Providers) -->
+    <script src="src/leaflet-providers.js"></script>
+    
     <!-- D3 CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.js"></script>
     
@@ -17,8 +20,19 @@
 <body>
     <!-- Map element -->
     <div id="mapdiv">
-            <!-- Javascript file -->
-    <script src="logic.js"></script>
+    <script>
+        // Initialize map
+        var myMap = L.map('mapdiv', {center: [37.09, -95.71], zoom: 5});
+    
+        // Define streetmap
+        var streetmap = L.tileLayer.provider('Esri.WorldStreetMap', {attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012', maxZoom: 18});
+        
+        var map2 = L.tileLayer.provider('OpenStreetMap.Mapnik');
+    
+        // Add streetmap to map
+        myMap.addLayer(streetmap);
+
+    </script>
     </div>
 </body>
 </html>
