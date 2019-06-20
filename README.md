@@ -1,5 +1,5 @@
 ## North America Earthquake Map
-Javascript Code to create a Leaflet-based earthquake map. The map has three possible base maps and two overlay layers: earthquake incidences and tectonic plate locations. With the earthquakes, incidences are color coded by eathquake scale and the size of the circle marker also changes based on earthquake scale. Finally, the tectonic plates layer makes it possible to compare earthquake locations to existing tectonic plates. These two layers may be turned on or off.
+Javascript Code to create a Leaflet-based earthquake map. The map has three possible base maps and two overlay layers: earthquake incidences and tectonic plate locations. Earthquake markers are color-coded and sized according to the earthquake scale (magnitude). Finally, the tectonic plates layer makes it possible to compare earthquake locations to existing tectonic plates. These two layers may be turned on or off.
 
 ## Base Maps
 I use three base maps for this Leaflet project, making use of the Leaflet-providers extension. Available layers via Leaflet-providers are shown here: https://leaflet-extras.github.io/leaflet-providers/preview/. I use the ESRI WorldStreetMap, the ESRI WorldImagery Map, and the ESRI WorldTerrain Map. The World Imagery map (which is a satellite view) is set to default.
