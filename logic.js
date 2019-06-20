@@ -7,26 +7,24 @@ var myMap = L.map('mapdiv', {center: [37.09, -95.71], zoom: 5});
 var streetmap = L.tileLayer.provider('Esri.WorldStreetMap', {attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012', maxZoom: 18});
 myMap.addLayer(streetmap);
 
-// Using D3, place a call to the USGS earthquake geoJSON data
-d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.geojson", function(data) {
+// Make a D3 call to the USGS GeoJSON data
+d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.geojson").then(function(data) {
 
-  // This function returns the style data for each of the earthquakes we plot on
-  // the map. We pass the magnitude of the earthquake into two separate functions
-  // to calculate the color and radius.
+  // Earthquake marker styling. The markerColor function selects a color for the marker based on the scale (magnitude) of the earthquake.
   function styleInfo(feature) {
     return {
       opacity: 1,
       fillOpacity: 1,
-      fillColor: getColor(feature.properties.mag),
+      fillColor: markerColor(feature.properties.mag),
       color: "#000000",
-      radius: getRadius(feature.properties.mag),
+      radius: markerRadius(feature.properties.mag),
       stroke: true,
       weight: 0.5
     };
   }
 
   // This function determines the color of the marker based on the magnitude of the earthquake.
-  function getColor(magnitude) {
+  function markerColor(magnitude) {
     switch (true) {
     case magnitude > 5:
       return "#ea2c2c";
@@ -42,15 +40,9 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.geoj
       return "#98ee00";
     }
   }
-
-  // This function determines the radius of the earthquake marker based on its magnitude.
-  // Earthquakes with a magnitude of 0 were being plotted with the wrong radius.
-  function getRadius(magnitude) {
-    if (magnitude === 0) {
-      return 1;
-    }
-
-    return magnitude * 4;
+    
+  function markerRadius(magnitude) {
+    return magnitude * 3;
   }
 
   // Here we add a GeoJSON layer to the map once the file is loaded.
@@ -66,4 +58,35 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.geoj
       layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Location: " + feature.properties.place);
     }
   }).addTo(myMap);
+
+  // Here we create a legend control object.
+  var legend = L.control({
+    position: "bottomleft"
+  });
+
+  // Then add all the details for the legend
+  legend.onAdd = function() {
+    var div = L.DomUtil.create("div", "info legend");
+
+    var grades = [0, 1, 2, 3, 4, 5];
+    var colors = [
+      "#98ee00",
+      "#d4ee00",
+      "#eecc00",
+      "#ee9c00",
+      "#ea822c",
+      "#ea2c2c"
+    ];
+
+    // Looping through our intervals to generate a label with a colored square for each interval.
+    for (var i = 0; i < grades.length; i++) {
+      div.innerHTML +=
+        "<i style='background: " + colors[i] + "></i> " +
+        grades[i] + (grades[i + 1] ? "&ndash;" + grades[i + 1] + "<br>" : "+");
+    }
+    return div;
+  };
+
+  // Finally, we our legend to the map.
+  legend.addTo(myMap);
 });
