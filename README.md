@@ -14,6 +14,6 @@ I use D3 to make a call to the USGS earthquake data - all earthquakes of scale 1
 Then, tectonic plate data is also displayed by a similar means using data available at the source below.
 
 ## Sources
-Tectonic plate data: https://github.com/fraxen/tectonicplates
-USGS earthquake data: https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php
-Leaflet: https://leafletjs.com/
+- Tectonic plate data: https://github.com/fraxen/tectonicplates
+- USGS earthquake data: https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php
+- Leaflet: https://leafletjs.com/
