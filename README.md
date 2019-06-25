@@ -1,9 +1,9 @@
 ## USGS Earthquake Map
-Javascript Code to create a Leaflet-based earthquake map. The map has three possible base maps and two overlay layers: earthquake incidences and tectonic plate locations. Earthquake markers are color-coded and sized according to the earthquake scale (magnitude). Finally, the tectonic plates layer makes it possible to compare earthquake locations to existing tectonic plates. These two layers may be turned on or off.
+Javascript Code to create a Leaflet-based earthquake map. The map has three possible base maps and two overlay layers: earthquake incidences and tectonic plate locations. Earthquake markers are color-coded and sized according to the earthquake scale (magnitude). Finally, the tectonic plates layer makes it possible to compare earthquake locations to existing tectonic plates. These two layers may be turned on or off. The map is deployed to Github Pages at the site https://ashok-bidani.github.io/USGS-Earthquake-Map/.
 
 ## Map Navigation
 Layers may be toggled using the Leaflet control in the top right corner of the map.
-
+![Screenshot of Map](leaflet_map_screenshot.png  "screenshot")
 
 ## Base Maps
 I use three base maps for this Leaflet project, making use of the Leaflet-providers extension. Available layers via Leaflet-providers are shown here: https://leaflet-extras.github.io/leaflet-providers/preview/. I use the ESRI WorldStreetMap, the ESRI WorldImagery Map, and the ESRI WorldTerrain Map. The WorldImagery Map (which is a satellite view) is set to default.
